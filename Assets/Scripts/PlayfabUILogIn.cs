@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -7,7 +5,7 @@ using UnityEngine.UI;
 
 public class PlayfabUILogIn : MonoBehaviour
 {
-    [SerializeField] private bool isErrorHappening = false;
+    [SerializeField] private bool isErrorHappening;
     
     public UnityEvent ButtonClickedEvent;
 

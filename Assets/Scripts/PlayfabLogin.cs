@@ -1,15 +1,17 @@
+using System;
 using PlayFab;
 using PlayFab.ClientModels;
-using UnityEngine.Events;
 using UnityEngine;
-using System;
+using UnityEngine.Events;
 
 public class PlayfabLogin : MonoBehaviour
 {
+    private const string AuthGuidKey = "auth_guid_key";
+    
     public UnityEvent OnSuccessEvent;
     public UnityEvent OnErrorEvent;
 
-    private bool isLogged = false;
+    private bool isLogged;
 
     private void Start()
     {
@@ -19,28 +21,30 @@ public class PlayfabLogin : MonoBehaviour
         }
     }
 
-    // Нажатие на кнопку входа
+    // РќР°Р¶Р°С‚РёРµ РЅР° РєРЅРѕРїРєСѓ РІС…РѕРґР°
     public void OnTryToLogin()
     {
+        var needCreation = PlayerPrefs.HasKey(AuthGuidKey);
+        var id = PlayerPrefs.GetString(AuthGuidKey, Guid.NewGuid().ToString());
+        
         if (!isLogged)
         {
-            var request = new LoginWithCustomIDRequest()
+            var request = new LoginWithCustomIDRequest
             {
-                CustomId = "Player 1",
-                CreateAccount = true
+                CustomId = id,
+                CreateAccount = !needCreation
             };
 
-            PlayFabClientAPI.LoginWithCustomID(request, OnLoginSuccess, OnLoginError);
-            isLogged = true;
+            PlayFabClientAPI.LoginWithCustomID(request,
+                result =>
+                {
+                    PlayerPrefs.SetString(AuthGuidKey, id);
+                    OnLoginSuccess(result);
+                }, OnLoginError);
         }
-        else
-        {
-            return;
-        }
-        
     }
 
-    // Ивенты различных сценариев
+    // РРІРµРЅС‚С‹ СЂР°Р·Р»РёС‡РЅС‹С… СЃС†РµРЅР°СЂРёРµРІ
     private void OnLoginSuccess(LoginResult result)
     {
         Debug.Log("Complete Login");
