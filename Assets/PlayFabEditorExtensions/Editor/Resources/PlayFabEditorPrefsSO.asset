@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d0199c11aa6f514784c5c69cd8378d8, type: 3}
   m_Name: PlayFabEditorPrefsSO
   m_EditorClassIdentifier: 
-  DevAccountEmail: 
-  DevAccountToken: 
+  DevAccountEmail: LightSaber11@gmail.com
+  DevAccountToken: h57pxcfufobxiu67xs54wyb7fawa88qmkyx8anp47csimksir41tnrgzcd6pdkayd7chbg8iiihgcabab8hy6tn7mznrbt59qkmd81fpyzgn1k3aoboxpmxfcured7u8zjfr3zdw3ndq11bxxi7fgy1y1brue1pgasbmr36uidopssjp9jyhtx5ye87jkhkrn84ykaro
   SelectedStudio: 
-  SdkPath: 
+  SdkPath: Assets/PlayFabSDK
   EdExPath: 
-  LocalCloudScriptPath: 
+  LocalCloudScriptPath: F:/GitHub/MultibotsGame/Assets/PlayFabEditorExtensions/Editor/Resources/.CloudScript.js
   PanelIsShown: 0
-  curMainMenuIdx: 0
+  curMainMenuIdx: 4
   curSubMenuIdx: 0
